@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Натали Фахутдинова — владелец международных интеллектуальных клубов SJ по развитию личности через эмоциональный интеллект. Путь ежедневного роста, энергии и счастья. Присоединяйтесь к клубу Super Jump!">
+  <meta property="og:title" content="Натали Фахутдинова — Интеллектуальный клуб Super Jump">
+  <meta property="og:description" content="Международный клуб SJ — ежедневное развитие личности, энергии и эмоционального интеллекта. Безопасное пространство поддержки и вдохновения на пути к совершенству.">
+  <meta property="og:type" content="website">
+  <title>Натали Фахутдинова — Интеллектуальный клуб Super Jump</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green1: #d0faea;
+      --green2: #b8f5e0;
+      --blue1: #d0f0fd;
+      --blue2: #b8e8fa;
+      --accent: #27b07a;
+      --accent2: #1a9bcd;
+      --dark: #1a2e25;
+      --text: #2c3e35;
+      --light: #f5fefb;
+      --gold: #c9a84c;
+      --radius: 20px;
+      --shadow: 0 8px 40px rgba(39,176,122,0.13);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text);
+      background: #e1fef5;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    /* ── ANIMATED BG GRADIENT ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(135deg, #e1fef5 0%, #c8f5e8 20%, #d4f5fd 40%, #e1fef5 60%, #cdf8ee 80%, #d0f0fd 100%);
+      background-size: 400% 400%;
+      animation: bgShift 14s ease-in-out infinite;
+    }
+    @keyframes bgShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(225,254,245,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(39,176,122,0.15);
+      padding: 12px clamp(16px, 4vw, 60px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .logo-wrap img {
+      width: clamp(40px, 6vw, 56px);
+      height: clamp(40px, 6vw, 56px);
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent);
+    }
+    .logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.2;
+    }
+    .logo-text span { color: var(--accent); }
+
+    nav { display: flex; gap: 8px; flex-wrap: wrap; }
+    nav a {
+      font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 50px;
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+    nav a:hover { background: var(--accent); color: #fff; }
+
+    .header-cta {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff !important;
+      font-weight: 600 !important;
+      border-radius: 50px;
+    }
+    .header-cta:hover { opacity: 0.85; background: var(--accent) !important; color:#fff !important; }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(225,254,245,0.97);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--dark);
+      text-decoration: none;
+      padding: 10px 30px;
+      border-radius: 50px;
+      transition: 0.3s;
+    }
+    .mobile-nav a:hover { background: var(--accent); color: #fff; }
+    .mobile-nav .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--dark);
+    }
+
+    @media(max-width: 900px) {
+      nav { display: none; }
+      .burger { display: flex; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100svh;
+      padding: clamp(20px, 4vw, 60px) clamp(16px, 4vw, 80px);
+      display: flex;
+      align-items: center;
+    }
+    /* DESKTOP hero layout */
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(24px, 4vw, 60px);
+      align-items: center;
+      max-width: 1300px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero-left { order: 1; }
+    .hero-right { order: 2; }
+
+    .hero-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(39,176,122,0.15), rgba(26,155,205,0.15));
+      border: 1px solid rgba(39,176,122,0.3);
+      border-radius: 50px;
+      padding: 8px 20px;
+      font-size: clamp(0.65rem, 1.2vw, 0.8rem);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4.5vw, 4rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-sub {
+      font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+      color: #4a6358;
+      margin-bottom: 28px;
+      max-width: 520px;
+    }
+    .hero-features {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .hero-feat {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: clamp(0.8rem, 1.3vw, 0.95rem);
+      font-weight: 500;
+    }
+    .feat-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(39,176,122,0.2), rgba(26,155,205,0.2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.8rem, 1.3vw, 0.95rem);
+      font-weight: 700;
+      padding: clamp(12px,2vw,16px) clamp(20px,3vw,32px);
+      border-radius: 50px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      letter-spacing: 0.04em;
+      box-shadow: 0 6px 24px rgba(39,176,122,0.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(39,176,122,0.45); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--accent);
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.8rem, 1.3vw, 0.95rem);
+      font-weight: 600;
+      padding: clamp(12px,2vw,16px) clamp(20px,3vw,32px);
+      border-radius: 50px;
+      text-decoration: none;
+      border: 2px solid var(--accent);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
+
+    /* Hero photo */
+    .hero-photo-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-photo-card {
+      position: relative;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(39,176,122,0.2);
+      width: 100%;
+      max-width: 520px;
+    }
+    .hero-photo-card img {
+      width: 100%;
+      height: clamp(400px, 60vh, 680px);
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .hero-photo-badge {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-radius: 50px;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .hero-photo-badge span { font-size: 0.8rem; font-weight: 600; color: var(--dark); }
+    .hero-photo-badge .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.4);opacity:0.7} }
+
+    .hero-deco {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(40px);
+      z-index: -1;
+    }
+    .hero-deco-1 { width: 200px; height: 200px; background: rgba(39,176,122,0.18); top: -40px; right: -40px; }
+    .hero-deco-2 { width: 150px; height: 150px; background: rgba(26,155,205,0.18); bottom: -30px; left: -30px; }
+
+    /* MOBILE hero overrides */
+    @media(max-width: 768px) {
+      .hero {
+        min-height: auto;
+        padding: 24px 16px 40px;
+      }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .hero-right { order: 1; }
+      .hero-left { order: 2; }
+      .hero-photo-card img {
+        height: clamp(300px, 65vw, 440px);
+        object-position: center top;
+      }
+      .hero h1 { font-size: clamp(1.7rem, 7vw, 2.4rem); }
+      .hero-sub { font-size: 0.9rem; }
+      .hero-btns { justify-content: center; }
+    }
+
+    /* ── SECTION COMMON ── */
+    section { padding: clamp(48px, 8vw, 100px) clamp(16px, 4vw, 80px); }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-size: clamp(0.65rem, 1.2vw, 0.75rem);
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+      color: #4a6358;
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+
+    /* ── STATS STRIPE ── */
+    .stats-stripe {
+      background: linear-gradient(135deg, rgba(39,176,122,0.12), rgba(26,155,205,0.12));
+      border-top: 1px solid rgba(39,176,122,0.2);
+      border-bottom: 1px solid rgba(39,176,122,0.2);
+      padding: 32px clamp(16px,4vw,80px);
+    }
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    .stat-item .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-item .lbl {
+      font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+      color: #4a6358;
+      margin-top: 4px;
+    }
+    @media(max-width: 600px) { .stats-inner { grid-template-columns: 1fr 1fr; } }
+
+    /* ── ABOUT / SUCCESS ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(24px, 4vw, 60px);
+      align-items: start;
+    }
+    .about-text p { margin-bottom: 14px; font-size: clamp(0.88rem, 1.3vw, 1rem); color: #3a5248; }
+    .about-text strong { color: var(--accent); }
+
+    .success-card {
+      background: linear-gradient(135deg, rgba(39,176,122,0.1), rgba(26,155,205,0.08));
+      border: 1px solid rgba(39,176,122,0.25);
+      border-radius: var(--radius);
+      padding: clamp(24px,3vw,40px);
+    }
+    .success-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 2.5vw, 2rem);
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 20px;
+    }
+    .success-items { display: flex; flex-direction: column; gap: 14px; }
+    .success-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(255,255,255,0.6);
+      border-radius: 14px;
+      padding: 14px 18px;
+    }
+    .success-pct {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--accent);
+      min-width: 60px;
+      line-height: 1;
+    }
+    .success-label { font-size: 0.9rem; font-weight: 600; color: var(--dark); }
+
+    @media(max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── CLUB SECTION ── */
+    .club-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .club-card {
+      background: rgba(255,255,255,0.65);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(39,176,122,0.2);
+      border-radius: var(--radius);
+      padding: clamp(20px,2.5vw,32px);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .club-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .club-card .icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .club-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .club-card p { font-size: clamp(0.82rem, 1.2vw, 0.92rem); color: #4a6358; }
+
+    /* ── GALLERY ── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .gallery-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      cursor: pointer;
+      position: relative;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+      display: block;
+    }
+    .gallery-item:hover img { transform: scale(1.07); }
+    .gallery-item .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(27,60,45,0.45), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+    }
+    .gallery-item:hover .overlay { opacity: 1; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.88);
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 16px;
+      object-fit: contain;
+      box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+    }
+    .lightbox .lb-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .lightbox .lb-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    .lightbox .lb-arrow:hover { background: rgba(255,255,255,0.3); }
+    .lightbox .lb-prev { left: 16px; }
+    .lightbox .lb-next { right: 16px; }
+
+    /* ── VIDEOS ── */
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .video-card {
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(39,176,122,0.2);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(39,176,122,0.08);
+    }
+    .video-card iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: none;
+      display: block;
+    }
+    .video-card .vid-label {
+      padding: 12px 16px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-align: center;
+    }
+
+    /* ── CERTS ── */
+    .certs-slider-wrap { position: relative; overflow: hidden; }
+    .certs-track {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      padding-bottom: 8px;
+    }
+    .certs-track::-webkit-scrollbar { display: none; }
+    .cert-card {
+      scroll-snap-align: start;
+      flex: 0 0 clamp(200px, 28vw, 300px);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(39,176,122,0.12);
+      transition: transform 0.3s;
+      background: rgba(255,255,255,0.7);
+    }
+    .cert-card:hover { transform: translateY(-4px) scale(1.02); }
+    .cert-card img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; }
+
+    .slider-arrows { display: flex; gap: 12px; justify-content: center; margin-top: 20px; }
+    .s-arrow {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+    }
+    .s-arrow:hover { background: var(--accent); color: #fff; }
+
+    /* ── QUOTES ── */
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .quote-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(39,176,122,0.12);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .quote-card:hover { transform: translateY(-4px) scale(1.02); }
+    .quote-card img { width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 1/1; }
+
+    /* ── PRACTICE CARD ── */
+    .practice-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(24px,4vw,60px);
+      align-items: center;
+    }
+    .practice-text {
+      background: rgba(255,255,255,0.65);
+      border: 1px solid rgba(39,176,122,0.25);
+      border-radius: var(--radius);
+      padding: clamp(24px,3vw,48px);
+    }
+    .practice-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem,2.5vw,2rem);
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+    .practice-text p { font-size: clamp(0.88rem,1.3vw,1rem); color: #3a5248; margin-bottom: 12px; }
+    .practice-text .heart { font-size: 1.2rem; }
+
+    .book-card {
+      background: linear-gradient(135deg, rgba(39,176,122,0.12), rgba(26,155,205,0.1));
+      border: 1px solid rgba(39,176,122,0.25);
+      border-radius: var(--radius);
+      padding: clamp(24px,3vw,40px);
+      text-align: center;
+    }
+    .book-card img {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(39,176,122,0.2);
+      margin-bottom: 20px;
+    }
+    .book-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem,2vw,1.6rem);
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+    .book-card p { font-size: 0.88rem; color: #4a6358; margin-bottom: 20px; }
+
+    @media(max-width: 768px) {
+      .practice-wrap { grid-template-columns: 1fr; }
+    }
+
+    /* ── TESTIMONIALS (videos) ── */
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .test-card {
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(39,176,122,0.2);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .test-card iframe {
+      width: 100%;
+      aspect-ratio: 9/16;
+      border: none;
+      display: block;
+    }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      background: linear-gradient(135deg, rgba(39,176,122,0.15), rgba(26,155,205,0.15));
+      border-top: 1px solid rgba(39,176,122,0.2);
+      border-bottom: 1px solid rgba(39,176,122,0.2);
+    }
+    .cta-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .cta-inner h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem,4vw,3rem);
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+    .cta-inner p { font-size: clamp(0.9rem,1.5vw,1.05rem); color: #4a6358; margin-bottom: 32px; }
+    .cta-btns { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+
+    /* ── CONTACTS / LINKS ── */
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .contact-card {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(39,176,122,0.2);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .contact-card .c-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(39,176,122,0.2), rgba(26,155,205,0.2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .contact-card .c-icon svg { width: 26px; height: 26px; }
+    .contact-card .c-label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+    .contact-card .c-val { font-size: 0.9rem; font-weight: 600; color: var(--dark); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.75);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.85rem;
+    }
+    footer .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+      margin: 0 0 24px;
+    }
+    .divider.center { margin: 0 auto 24px; }
+
+    /* ── SCROLL FADE ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── FLOATING WHATSAPP ── */
+    .fab-wa {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 500;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .fab-wa:hover { transform: scale(1.1); box-shadow: 0 10px 36px rgba(37,211,102,0.55); }
+    .fab-wa svg { width: 30px; height: 30px; fill: #fff; }
+
+    /* ── UTILITY ── */
+    .text-center { text-align: center; }
+    .mb-0 { margin-bottom: 0 !important; }
+
+    /* Section bg alternation */
+    .bg-alt {
+      background: linear-gradient(135deg, rgba(208,250,234,0.3), rgba(208,240,253,0.3));
+    }
+  </style>
+</head>
+<body>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Мобильная навигация">
+  <button class="close-btn" onclick="closeMobileNav()" aria-label="Закрыть">×</button>
+  <a href="#about-me" onclick="closeMobileNav()">Обо мне</a>
+  <a href="#club" onclick="closeMobileNav()">Клуб SJ</a>
+  <a href="#gallery" onclick="closeMobileNav()">Галерея</a>
+  <a href="#videos" onclick="closeMobileNav()">Видео</a>
+  <a href="#certs" onclick="closeMobileNav()">Сертификаты</a>
+  <a href="#gifts" onclick="closeMobileNav()">Подарок</a>
+  <a href="#contacts" onclick="closeMobileNav()">Контакты</a>
+</nav>
+
+<!-- HEADER -->
+<header>
+  <a href="#" class="logo-wrap">
+    <img src="img/logo.jpg" alt="Логотип Super Jump" onerror="this.style.display='none'">
+    <div class="logo-text">Натали<br><span>Super Jump</span></div>
+  </a>
+  <nav aria-label="Основная навигация">
+    <a href="#about-me">Обо мне</a>
+    <a href="#club">Клуб SJ</a>
+    <a href="#gallery">Галерея</a>
+    <a href="#videos">Видео</a>
+    <a href="#certs">Сертификаты</a>
+    <a href="#gifts">Подарок</a>
+    <a href="#contacts" class="header-cta">Связаться</a>
+  </nav>
+  <button class="burger" onclick="openMobileNav()" aria-label="Открыть меню">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero" aria-label="Главный экран">
+  <div class="hero-inner">
+    <!-- LEFT: text + buttons -->
+    <div class="hero-left fade-in">
+      <div class="hero-badge">🌿 Международный Интеллектуальный Клуб</div>
+      <h1>Натали<br><em>Фахутдинова</em></h1>
+      <p class="hero-sub">Владелец международных интеллектуальных клубов по развитию личности через <strong>эмоциональный интеллект</strong></p>
+      <div class="hero-features">
+        <div class="hero-feat"><span class="feat-icon">🧠</span> Развитие эмоционального интеллекта</div>
+        <div class="hero-feat"><span class="feat-icon">⚡</span> Ежедневное увеличение энергии</div>
+        <div class="hero-feat"><span class="feat-icon">🌍</span> Онлайн — из любой точки мира</div>
+        <div class="hero-feat"><span class="feat-icon">👥</span> Сильное сообщество единомышленников</div>
+        <div class="hero-feat"><span class="feat-icon">🎯</span> Личный путь к совершенству</div>
+      </div>
+      <div class="hero-btns">
+        <a href="https://account.superjump.com/register/169212" target="_blank" rel="noopener" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Вступить в клуб SJ
+        </a>
+        <a href="https://vk.com/id133451977" target="_blank" rel="noopener" class="btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2zm3.08 13.56h-1.57c-.59 0-.77-.47-1.83-1.54-.92-.88-1.32-.99-1.55-.99-.31 0-.4.09-.4.52v1.41c0 .37-.12.59-1.12.59-1.65 0-3.48-1-4.77-2.86C5.57 10.9 5 9.37 5 8.99c0-.23.09-.44.52-.44h1.57c.39 0 .54.18.69.61.76 2.18 2.04 4.09 2.57 4.09.2 0 .29-.09.29-.59V10.6c-.06-1.07-.63-1.16-.63-1.54 0-.18.15-.37.39-.37h2.47c.33 0 .44.18.44.56v3c0 .33.15.44.24.44.2 0 .37-.11.74-.48 1.14-1.28 1.96-3.24 1.96-3.24.11-.23.29-.44.68-.44h1.57c.47 0 .57.24.47.56-.2.91-2.12 3.63-2.12 3.63-.17.27-.23.39 0 .69.17.23.73.71 1.1 1.14.68.76 1.2 1.4 1.34 1.84.15.44-.08.66-.54.66z"/></svg>
+          Написать ВКонтакте
+        </a>
+      </div>
+    </div>
+    <!-- RIGHT: photo -->
+    <div class="hero-right fade-in">
+      <div class="hero-photo-wrap">
+        <div class="hero-deco hero-deco-1"></div>
+        <div class="hero-deco hero-deco-2"></div>
+        <div class="hero-photo-card">
+          <img src="img/1.jpg" alt="Натали Фахутдинова — Интеллектуальный клуб Super Jump" onerror="this.style.background='linear-gradient(135deg,#d0faea,#d0f0fd)';this.style.minHeight='420px'">
+          <div class="hero-photo-badge">
+            <div class="dot"></div>
+            <span>Клуб SJ · Онлайн</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIPE -->
+<div class="stats-stripe">
+  <div class="stats-inner">
+    <div class="stat-item fade-in">
+      <div class="num">10+</div>
+      <div class="lbl">лет личностного роста</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="num">∞</div>
+      <div class="lbl">путь длиною в жизнь</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="num">100%</div>
+      <div class="lbl">онлайн, из любой точки мира</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT ME -->
+<section id="about-me" class="bg-alt">
+  <div class="section-inner">
+    <p class="section-label">Обо мне</p>
+    <div class="divider"></div>
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <h2 class="section-title">Давайте познакомимся</h2>
+        <p>Я <strong>Натали Фахутдинова</strong>, мне 45 лет. Я мама самого замечательного особенного ребёнка, любящая супруга и самая счастливая женщина на свете — но так было не всегда.</p>
+        <p>Более 20 лет я работала в найме, в банковской сфере. И более 10 лет назад я потеряла себя. Я больше не занималась тем, что мне нравится, не уделяла себе времени. Просто плыла по течению в состоянии стагнации.</p>
+        <p>Однажды я задумалась: <strong>а можно ли жить по-другому?</strong> Оказалось — ДА! И в мою жизнь зашёл Super Jump. Здесь начали происходить чудеса!</p>
+        <p>События стали подстраиваться под мои планы, появились средства на их исполнение. Появились силы на новую жизнь — яркую, наполненную и, главное, со смыслом.</p>
+        <p>Улучшились отношения в семье, наладилось общение с самым одарённым ребёнком на свете. И я нашла дело всей своей жизни — помогать каждому человеку, который хочет жить своей самой счастливой жизнью, найти свой путь.</p>
+        <p>Потому что я прошла этот путь сама и готова делиться своим опытом с лёгкостью.</p>
+        <div style="margin-top:24px;">
+          <a href="https://account.superjump.com/register/169212" target="_blank" rel="noopener" class="btn-primary">Начать путь со мной</a>
+        </div>
+      </div>
+      <div class="success-card fade-in">
+        <h3>Формула успеха</h3>
+        <p style="font-size:0.9rem;color:#4a6358;margin-bottom:20px;">Успех состоит из трёх ключевых компонентов:</p>
+        <div class="success-items">
+          <div class="success-item">
+            <div class="success-pct">10%</div>
+            <div>
+              <div class="success-label">Знания</div>
+              <div style="font-size:0.82rem;color:#4a6358;">Информация и навыки</div>
+            </div>
+          </div>
+          <div class="success-item">
+            <div class="success-pct">40%</div>
+            <div>
+              <div class="success-label">Состояние</div>
+              <div style="font-size:0.82rem;color:#4a6358;">Энергия и эмоции</div>
+            </div>
+          </div>
+          <div class="success-item">
+            <div class="success-pct">50%</div>
+            <div>
+              <div class="success-label">Окружение</div>
+              <div style="font-size:0.82rem;color:#4a6358;">Люди рядом с вами</div>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top:20px;font-size:0.88rem;color:#4a6358;font-style:italic;">В Клубе SJ мы работаем над всеми тремя составляющими одновременно.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLUB SECTION -->
+<section id="club">
+  <div class="section-inner">
+    <p class="section-label text-center">Интеллектуальный клуб</p>
+    <div class="divider center"></div>
+    <h2 class="section-title text-center">Клуб SJ — путь к совершенству</h2>
+    <p class="section-desc text-center" style="margin: 0 auto 40px;">Мы объединились, чтобы ежедневно поддерживать и вдохновлять друг друга на пути к совершенству. Это территория, где безопасно, комфортно и нет конкурентов.</p>
+    <div class="club-cards">
+      <div class="club-card fade-in">
+        <span class="icon">🧠</span>
+        <h3>Эмоциональный интеллект</h3>
+        <p>Развиваем ЭИ как ключевой инструмент управления жизнью, отношениями и результатами</p>
+      </div>
+      <div class="club-card fade-in">
+        <span class="icon">⚡</span>
+        <h3>Энергия каждый день</h3>
+        <p>Ежедневные практики для поддержания высокого уровня жизненной энергии и мотивации</p>
+      </div>
+      <div class="club-card fade-in">
+        <span class="icon">👥</span>
+        <h3>Сильное сообщество</h3>
+        <p>Пространство, где мы все можем быть полезны друг другу — без конкуренции, с поддержкой</p>
+      </div>
+      <div class="club-card fade-in">
+        <span class="icon">🌍</span>
+        <h3>Онлайн без границ</h3>
+        <p>Участвуйте из любой точки мира. Международный клуб с участниками по всему земному шару</p>
+      </div>
+      <div class="club-card fade-in">
+        <span class="icon">🎯</span>
+        <h3>Личностный рост</h3>
+        <p>Путь ежедневного развития личности длиною в жизнь. Каждый день лучше, чем вчера</p>
+      </div>
+      <div class="club-card fade-in">
+        <span class="icon">❤️</span>
+        <h3>Счастье изнутри</h3>
+        <p>Помогаем найти своё счастье, гармонию в семье и смысл жизни через работу с собой</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="bg-alt">
+  <div class="section-inner">
+    <p class="section-label text-center">Фотогалерея</p>
+    <div class="divider center"></div>
+    <h2 class="section-title text-center">Жизнь в клубе SJ</h2>
+    <p class="section-desc text-center" style="margin: 0 auto 32px;">Моменты радости, роста и вдохновения вместе с командой Super Jump</p>
+    <div class="gallery-grid">
+      <div class="gallery-item fade-in" onclick="openLightbox(0)">
+        <img src="img/2.jpg" alt="Натали Фахутдинова и команда Super Jump — фото 1" loading="lazy">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item fade-in" onclick="openLightbox(1)">
+        <img src="img/3.jpg" alt="Натали Фахутдинова — фото 2" loading="lazy">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item fade-in" onclick="openLightbox(2)">
+        <img src="img/4.jpg" alt="Клуб Super Jump — фото 3" loading="lazy">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item fade-in" onclick="openLightbox(3)">
+        <img src="img/5.jpg" alt="Команда Super Jump — фото 4" loading="lazy">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item fade-in" onclick="openLightbox(4)">
+        <img src="img/6.jpg" alt="Натали — фото 5" loading="lazy">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item fade-in" onclick="openLightbox(5)">
+        <img src="img/7.jpg" alt="Клуб SJ — фото 6" loading="lazy">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item fade-in" onclick="openLightbox(6)">
+        <img src="img/8.jpg" alt="Super Jump — фото 7" loading="lazy">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item fade-in" onclick="openLightbox(7)">
+        <img src="img/9.jpg" alt="Команда — фото 8" loading="lazy">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item fade-in" onclick="openLightbox(8)">
+        <img src="img/10.jpg" alt="Натали Фахутдинова — фото 9" loading="lazy">
+        <div class="overlay"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Просмотр фото">
+  <button class="lb-close" onclick="closeLightbox()" aria-label="Закрыть">×</button>
+  <button class="lb-arrow lb-prev" onclick="lbPrev()" aria-label="Предыдущее">&#8249;</button>
+  <img src="" alt="Фото" id="lbImg">
+  <button class="lb-arrow lb-next" onclick="lbNext()" aria-label="Следующее">&#8250;</button>
+</div>
+
+<!-- VIDEOS FROM NATALI & TEAM -->
+<section id="videos">
+  <div class="section-inner">
+    <p class="section-label text-center">Видео</p>
+    <div class="divider center"></div>
+    <h2 class="section-title text-center">Видео от Натальи и команды Super Jump</h2>
+    <p class="section-desc text-center" style="margin: 0 auto 32px;">Смотрите вдохновляющие видео о нашем клубе и методах личностного роста</p>
+    <div class="videos-grid">
+      <div class="video-card fade-in">
+        <iframe src="https://vkvideo.ru/video_ext.php?oid=133451977&id=456239042&hd=2" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="Видео от Натальи Super Jump 1"></iframe>
+        <div class="vid-label">✨ Клуб Super Jump</div>
+      </div>
+      <div class="video-card fade-in">
+        <iframe src="https://vkvideo.ru/video_ext.php?oid=133451977&id=456239041&hd=2" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="Видео от Натальи Super Jump 2"></iframe>
+        <div class="vid-label">🌿 Развитие личности</div>
+      </div>
+      <div class="video-card fade-in">
+        <iframe src="https://vkvideo.ru/video_ext.php?oid=133451977&id=456239043&hd=2" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="Видео от Натальи Super Jump 3"></iframe>
+        <div class="vid-label">⚡ Энергия и мотивация</div>
+      </div>
+      <div class="video-card fade-in">
+        <iframe src="https://vkvideo.ru/video_ext.php?oid=133451977&id=456239044&hd=2" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="Видео от Натальи Super Jump 4"></iframe>
+        <div class="vid-label">❤️ История успеха</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certs" class="bg-alt">
+  <div class="section-inner">
+    <p class="section-label text-center">Квалификация</p>
+    <div class="divider center"></div>
+    <h2 class="section-title text-center">Сертификаты</h2>
+    <p class="section-desc text-center" style="margin: 0 auto 32px;">Подтверждённая квалификация и профессиональные достижения Натали Фахутдиновой</p>
+    <div class="certs-slider-wrap">
+      <div class="certs-track" id="certsTrack">
+        <div class="cert-card" onclick="openLightboxCert(0)">
+          <img src="img/cert_1.jpg" alt="Сертификат 1" loading="lazy">
+        </div>
+        <div class="cert-card" onclick="openLightboxCert(1)">
+          <img src="img/cert_2.jpg" alt="Сертификат 2" loading="lazy">
+        </div>
+        <div class="cert-card" onclick="openLightboxCert(2)">
+          <img src="img/cert_3.jpg" alt="Сертификат 3" loading="lazy">
+        </div>
+        <div class="cert-card" onclick="openLightboxCert(3)">
+          <img src="img/cert_4.jpg" alt="Сертификат 4" loading="lazy">
+        </div>
+        <div class="cert-card" onclick="openLightboxCert(4)">
+          <img src="img/cert_5.jpg" alt="Сертификат 5" loading="lazy">
+        </div>
+        <div class="cert-card" onclick="openLightboxCert(5)">
+          <img src="img/cert_6.jpg" alt="Сертификат 6" loading="lazy">
+        </div>
+        <div class="cert-card" onclick="openLightboxCert(6)">
+          <img src="img/cert_7.jpg" alt="Сертификат 7" loading="lazy">
+        </div>
+      </div>
+    </div>
+    <div class="slider-arrows">
+      <button class="s-arrow" onclick="scrollCerts(-1)" aria-label="Назад">&#8249;</button>
+      <button class="s-arrow" onclick="scrollCerts(1)" aria-label="Вперёд">&#8250;</button>
+    </div>
+  </div>
+</section>
+
+<!-- CERT LIGHTBOX -->
+<div class="lightbox" id="certLightbox" role="dialog" aria-label="Просмотр сертификата">
+  <button class="lb-close" onclick="closeCertLightbox()" aria-label="Закрыть">×</button>
+  <button class="lb-arrow lb-prev" onclick="certLbPrev()" aria-label="Предыдущий">&#8249;</button>
+  <img src="" alt="Сертификат" id="certLbImg">
+  <button class="lb-arrow lb-next" onclick="certLbNext()" aria-label="Следующий">&#8250;</button>
+</div>
+
+<!-- QUOTES -->
+<section id="quotes">
+  <div class="section-inner">
+    <p class="section-label text-center">Вдохновение</p>
+    <div class="divider center"></div>
+    <h2 class="section-title text-center">Цитаты для вдохновения</h2>
+    <p class="section-desc text-center" style="margin: 0 auto 32px;">Слова, которые помогают двигаться вперёд каждый день</p>
+    <div class="quotes-grid">
+      <div class="quote-card fade-in" onclick="openLightboxQuote(0)">
+        <img src="img/quote_1.jpg" alt="Вдохновляющая цитата 1" loading="lazy">
+      </div>
+      <div class="quote-card fade-in" onclick="openLightboxQuote(1)">
+        <img src="img/quote_2.jpg" alt="Вдохновляющая цитата 2" loading="lazy">
+      </div>
+      <div class="quote-card fade-in" onclick="openLightboxQuote(2)">
+        <img src="img/quote_3.jpg" alt="Вдохновляющая цитата 3" loading="lazy">
+      </div>
+      <div class="quote-card fade-in" onclick="openLightboxQuote(3)">
+        <img src="img/quote_4.jpg" alt="Вдохновляющая цитата 4" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE LIGHTBOX -->
+<div class="lightbox" id="quoteLightbox" role="dialog" aria-label="Просмотр цитаты">
+  <button class="lb-close" onclick="closeQuoteLightbox()" aria-label="Закрыть">×</button>
+  <button class="lb-arrow lb-prev" onclick="quoteLbPrev()" aria-label="Предыдущая">&#8249;</button>
+  <img src="" alt="Цитата" id="quoteLbImg">
+  <button class="lb-arrow lb-next" onclick="quoteLbNext()" aria-label="Следующая">&#8250;</button>
+</div>
+
+<!-- GIFTS: BOOK + PRACTICE -->
+<section id="gifts" class="bg-alt">
+  <div class="section-inner">
+    <p class="section-label text-center">🎁 Подарок</p>
+    <div class="divider center"></div>
+    <h2 class="section-title text-center">Подарки для вас</h2>
+    <p class="section-desc text-center" style="margin: 0 auto 40px;">Бесплатная книга и эффективная практика, которой я сама пользуюсь каждый день</p>
+    <div class="practice-wrap">
+      <div class="book-card fade-in">
+        <img src="img/book.jpg" alt="Книга — подарок от Натали Фахутдиновой" onerror="this.style.display='none'">
+        <h3>📚 Книга в подарок</h3>
+        <p>Скачайте бесплатно — узнайте, как изменить жизнь через развитие личности и эмоционального интеллекта с Super Jump</p>
+        <a href="https://drive.google.com/file/d/19wrCkk1QbYBL4HohbnnFR-WuFd5KU_0E/view" target="_blank" rel="noopener" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+          Скачать книгу бесплатно
+        </a>
+      </div>
+      <div class="practice-text fade-in">
+        <h3>🎁 Практика «Мне посчастливилось...»</h3>
+        <p>Хотите поделюсь с вами очень простой, но эффективной практикой, которой я сама пользуюсь каждый день?</p>
+        <p>Называется она <strong>«Мне посчастливилось...»</strong></p>
+        <p>Заключается она в том, чтобы любое действие, которое вы собираетесь делать, сопровождали фразой не <em>«Я должен сделать...»</em>, а <strong>«Мне посчастливилось делать...»</strong></p>
+        <p>Как только вы начнёте строить именно так фразу перед выполнением любого действия, вы почувствуете, как у вас появятся силы и энергия на выполнение этих дел.</p>
+        <p>Попробуйте прямо сейчас и почувствуйте разницу! ✨</p>
+        <p class="heart">С любовью ❤️ Натали</p>
+        <div style="margin-top:24px;">
+          <a href="https://account.superjump.com/register/169212" target="_blank" rel="noopener" class="btn-secondary">Присоединиться к клубу</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-inner">
+    <p class="section-label text-center">Отзывы</p>
+    <div class="divider center"></div>
+    <h2 class="section-title text-center">Видеоотзывы участников</h2>
+    <p class="section-desc text-center" style="margin: 0 auto 32px;">Реальные истории людей, изменивших свою жизнь вместе с клубом Super Jump</p>
+    <div class="test-grid">
+      <div class="test-card fade-in">
+        <iframe src="https://vkvideo.ru/video_ext.php?oid=133451977&id=456239048&hd=2" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="Видеоотзыв 1"></iframe>
+      </div>
+      <div class="test-card fade-in">
+        <iframe src="https://vkvideo.ru/video_ext.php?oid=133451977&id=456239049&hd=2" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="Видеоотзыв 2"></iframe>
+      </div>
+      <div class="test-card fade-in">
+        <iframe src="https://vkvideo.ru/video_ext.php?oid=133451977&id=456239050&hd=2" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="Видеоотзыв 3"></iframe>
+      </div>
+      <div class="test-card fade-in">
+        <iframe src="https://vkvideo.ru/video_ext.php?oid=133451977&id=456239051&hd=2" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="Видеоотзыв 4"></iframe>
+      </div>
+      <div class="test-card fade-in">
+        <iframe src="https://vkvideo.ru/video_ext.php?oid=133451977&id=456239052&hd=2" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="Видеоотзыв 5"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+  <div class="section-inner">
+    <div class="cta-inner fade-in">
+      <h2>Готовы начать путь к счастливой жизни?</h2>
+      <p>Присоединяйтесь к международному интеллектуальному клубу SJ. Ежедневное развитие, поддержка сообщества и путь к совершенству — длиною в жизнь.</p>
+      <div class="cta-btns">
+        <a href="https://account.superjump.com/register/169212" target="_blank" rel="noopener" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Вступить в клуб SJ
+        </a>
+        <a href="tel:+79263126222" class="btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Позвонить
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section id="contacts">
+  <div class="section-inner">
+    <p class="section-label text-center">Контакты</p>
+    <div class="divider center"></div>
+    <h2 class="section-title text-center">Свяжитесь со мной</h2>
+    <p class="section-desc text-center" style="margin: 0 auto 32px;">Выберите удобный способ связи — я отвечу как можно скорее</p>
+    <div class="contacts-grid">
+      <a href="https://account.superjump.com/register/169212" target="_blank" rel="noopener" class="contact-card">
+        <div class="c-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="c-label">Регистрация</div>
+        <div class="c-val">Вступить в клуб SJ</div>
+      </a>
+      <a href="https://vk.com/id133451977" target="_blank" rel="noopener" class="contact-card">
+        <div class="c-icon">
+          <svg viewBox="0 0 24 24" fill="var(--accent)"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2zm3.08 13.56h-1.57c-.59 0-.77-.47-1.83-1.54-.92-.88-1.32-.99-1.55-.99-.31 0-.4.09-.4.52v1.41c0 .37-.12.59-1.12.59-1.65 0-3.48-1-4.77-2.86C5.57 10.9 5 9.37 5 8.99c0-.23.09-.44.52-.44h1.57c.39 0 .54.18.69.61.76 2.18 2.04 4.09 2.57 4.09.2 0 .29-.09.29-.59V10.6c-.06-1.07-.63-1.16-.63-1.54 0-.18.15-.37.39-.37h2.47c.33 0 .44.18.44.56v3c0 .33.15.44.24.44.2 0 .37-.11.74-.48 1.14-1.28 1.96-3.24 1.96-3.24.11-.23.29-.44.68-.44h1.57c.47 0 .57.24.47.56-.2.91-2.12 3.63-2.12 3.63-.17.27-.23.39 0 .69.17.23.73.71 1.1 1.14.68.76 1.2 1.4 1.34 1.84.15.44-.08.66-.54.66z"/></svg>
+        </div>
+        <div class="c-label">ВКонтакте</div>
+        <div class="c-val">Наталья Фархуди</div>
+      </a>
+      <a href="https://chat.whatsapp.com/FSyCwMMebniG42H0qbjbkC?s=cl&p=a&mlu=0" target="_blank" rel="noopener" class="contact-card">
+        <div class="c-icon">
+          <svg viewBox="0 0 24 24" fill="var(--accent)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div class="c-label">WhatsApp</div>
+        <div class="c-val">Женский клуб «Счастье в тебе»</div>
+      </a>
+      <a href="tel:+79263126222" class="contact-card">
+        <div class="c-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div class="c-label">Телефон</div>
+        <div class="c-val">+7 (926) 312-62-22</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Натали Фахутдинова · Super Jump</div>
+  <p style="margin-bottom:10px;">Международный интеллектуальный клуб развития личности через эмоциональный интеллект</p>
+  <p>
+    <a href="https://vk.com/id133451977" target="_blank" rel="noopener">ВКонтакте</a> &nbsp;|&nbsp;
+    <a href="https://wa.me/79263126222" target="_blank" rel="noopener">WhatsApp</a> &nbsp;|&nbsp;
+    <a href="https://account.superjump.com/register/169212" target="_blank" rel="noopener">Вступить в клуб</a>
+  </p>
+  <p style="margin-top:16px;font-size:0.78rem;opacity:0.6;">© 2026 Клуб SJ · Натали Фахутдинова · Все права защищены</p>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/79263126222" target="_blank" rel="noopener" class="fab-wa" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  // ── MOBILE NAV ──
+  function openMobileNav() { document.getElementById('mobileNav').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); document.body.style.overflow=''; }
+
+  // ── FADE IN ON SCROLL ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ── GALLERY LIGHTBOX ──
+  const galleryImgs = ['img/2.jpg','img/3.jpg','img/4.jpg','img/5.jpg','img/6.jpg','img/7.jpg','img/8.jpg','img/9.jpg','img/10.jpg'];
+  let lbIdx = 0;
+  function openLightbox(i) { lbIdx = i; document.getElementById('lbImg').src = galleryImgs[i]; document.getElementById('lightbox').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow=''; }
+  function lbPrev() { lbIdx = (lbIdx - 1 + galleryImgs.length) % galleryImgs.length; document.getElementById('lbImg').src = galleryImgs[lbIdx]; }
+  function lbNext() { lbIdx = (lbIdx + 1) % galleryImgs.length; document.getElementById('lbImg').src = galleryImgs[lbIdx]; }
+  document.getElementById('lightbox').addEventListener('click', function(e){ if(e.target===this) closeLightbox(); });
+
+  // ── CERT LIGHTBOX ──
+  const certImgs = ['img/cert_1.jpg','img/cert_2.jpg','img/cert_3.jpg','img/cert_4.jpg','img/cert_5.jpg','img/cert_6.jpg','img/cert_7.jpg'];
+  let certIdx = 0;
+  function openLightboxCert(i) { certIdx = i; document.getElementById('certLbImg').src = certImgs[i]; document.getElementById('certLightbox').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeCertLightbox() { document.getElementById('certLightbox').classList.remove('open'); document.body.style.overflow=''; }
+  function certLbPrev() { certIdx = (certIdx - 1 + certImgs.length) % certImgs.length; document.getElementById('certLbImg').src = certImgs[certIdx]; }
+  function certLbNext() { certIdx = (certIdx + 1) % certImgs.length; document.getElementById('certLbImg').src = certImgs[certIdx]; }
+  document.getElementById('certLightbox').addEventListener('click', function(e){ if(e.target===this) closeCertLightbox(); });
+
+  // ── QUOTE LIGHTBOX ──
+  const quoteImgs = ['img/quote_1.jpg','img/quote_2.jpg','img/quote_3.jpg','img/quote_4.jpg'];
+  let qIdx = 0;
+  function openLightboxQuote(i) { qIdx = i; document.getElementById('quoteLbImg').src = quoteImgs[i]; document.getElementById('quoteLightbox').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeQuoteLightbox() { document.getElementById('quoteLightbox').classList.remove('open'); document.body.style.overflow=''; }
+  function quoteLbPrev() { qIdx = (qIdx - 1 + quoteImgs.length) % quoteImgs.length; document.getElementById('quoteLbImg').src = quoteImgs[qIdx]; }
+  function quoteLbNext() { qIdx = (qIdx + 1) % quoteImgs.length; document.getElementById('quoteLbImg').src = quoteImgs[qIdx]; }
+  document.getElementById('quoteLightbox').addEventListener('click', function(e){ if(e.target===this) closeQuoteLightbox(); });
+
+  // ── CERTS SLIDER ──
+  function scrollCerts(dir) {
+    const track = document.getElementById('certsTrack');
+    const cardW = track.querySelector('.cert-card').offsetWidth + 16;
+    track.scrollBy({ left: dir * cardW * 2, behavior: 'smooth' });
+  }
+
+  // ── KEYBOARD ESC for all lightboxes ──
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') { closeLightbox(); closeCertLightbox(); closeQuoteLightbox(); closeMobileNav(); }
+    if(e.key === 'ArrowLeft') { if(document.getElementById('lightbox').classList.contains('open')) lbPrev(); if(document.getElementById('certLightbox').classList.contains('open')) certLbPrev(); if(document.getElementById('quoteLightbox').classList.contains('open')) quoteLbPrev(); }
+    if(e.key === 'ArrowRight') { if(document.getElementById('lightbox').classList.contains('open')) lbNext(); if(document.getElementById('certLightbox').classList.contains('open')) certLbNext(); if(document.getElementById('quoteLightbox').classList.contains('open')) quoteLbNext(); }
+  });
+</script>
+</body>
+</html>
